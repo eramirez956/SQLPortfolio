@@ -1,0 +1,35 @@
+#In this SQL, I am querying a table to quantify data about patient length of stay at three different hospitals, along with associated cost.
+
+#1 What was the shortest stay in the 24 month period for General Hospital?
+select min ("Length Of Stay")
+from Average_LengthofStay
+where Location = "General Hospital";
+
+#2 What was the longest stay in the 24 month period for General Hospital?
+select max ("Length Of Stay")
+from Average_LengthofStay
+where Location = "General Hospital";
+
+#3 What was the average length of stay in the 24 month period for General Hospital?
+select round(avg("Length Of Stay"), 0) as "Rounded Average"
+from Average_LengthofStay
+where Location = "General Hospital";
+
+#4 What was the lowest cost of stay in the 24 month period for General Hospital?
+select min ("Cost Of Stay")
+from Average_LengthofStay
+where location = "General Hospital";
+
+#5 What was the highest cost of stay in the 24 month period for General Hospital?
+select max ("Cost Of Stay")
+from Average_LengthofStay
+where location = "General Hospital";
+
+What was the average cost of stay in the 24 month period for General Hospital?
+select round(avg("Cost Of Stay"), 2) as "Average Cost of Stay"
+from Average_LengthofStay
+where Location = "General Hospital";
+
+#6 What was the average cost of stay in the 24 month period for ALL locations?
+select round(avg("Cost Of Stay"), 2) as "Average Cost of Stay"
+from Average_LengthofStay;
