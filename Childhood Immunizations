@@ -1,0 +1,43 @@
+#In this SQL, I am querying a table that contains information on childhood immunizations to quantify data on gender and immunization status.
+
+#1 What is the total number of female patients?
+select count(Gender)
+from Childhood_Immunizations
+where Gender = "Female";
+
+#2 What is the total number of male patients?
+select count(Gender)
+from Childhood_Immunizations
+where Gender = "Male";
+
+#3 How many patients have a current MMR status?
+select count("MMR Status")
+from Childhood_Immunizations
+where "MMR Status" = "Current";
+
+#4 How many patients have a missing or late MMR status?
+select count("MMR Status")
+from Childhood_Immunizations
+where "MMR Status" = "Missing Or Late";
+
+#5 What is the percentage of patients with a missing or late MMR status?
+select "MMR Status", count(*) as mmr_count,
+	count(*) * 100.0/ sum(count(*)) over () as mmr_percent
+from Childhood_Immunizations
+group by "MMR Status";
+
+#6 How many patients have a current Varicella status?
+select count("Varicella Status") as Current_Varicella_Patients
+from Childhood_Immunizations
+where "Varicella Status" = "Current";
+
+#7 How many patients have a missing or late Varicella status?
+select count("Varicella Status") as Current_Varicella_Patients
+from Childhood_Immunizations
+where "Varicella Status" = "Missing Or Late";
+
+#8 What is the percentage of patients with a missing or late Varicella status?
+select "Varicella Status", count(*) as varicella_count,
+	count(*) * 100.0/ sum(count(*)) over () as varicella_percent
+from Childhood_Immunizations
+group by "Varicella Status";
