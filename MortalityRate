@@ -1,0 +1,8 @@
+#In this SQL, I am querying a database that contains multiple tables that contain information on local causes of death to quantify data on mortality rates per cause of death. 
+
+#1 For Alzheimer's disease, how many local deaths were recorded?
+select count("Cause Of Death")
+from LocalCausesofDeath
+where "Cause Of Death" = "Alzheimer's disease";
+
+#1 For Alzheimer's disease, what is the local mortality rate for that cause?
