@@ -5,4 +5,9 @@ select count("Cause Of Death")
 from LocalCausesofDeath
 where "Cause Of Death" = "Alzheimer's disease";
 
-#1 For Alzheimer's disease, what is the local mortality rate for that cause?
+#2 For Cancer, how many local deaths were recorded?
+select count("Cause Of Death")
+from LocalCausesofDeath
+where "Cause Of Death" = "Cancer";
+
+#3 What was the most common cause of death locally?
