@@ -10,4 +10,19 @@ select count("Cause Of Death")
 from LocalCausesofDeath
 where "Cause Of Death" = "Cancer";
 
-#3 What was the most common cause of death locally?
+#3 What are the totals for each cause of death, starting at the top with the most common cause of death locally?
+select "Cause Of Death", count("Cause Of Death") as Cause_of_Death
+from LocalCausesofDeath
+group by "Cause Of Death"
+order by "Cause_of_Death" desc;
+
+#4 How many local deaths were recorded for persons age 25 or less?
+select count("Cause Of Death") as Local_Deaths_Under_25
+from LocalCausesofDeath
+where age <= 25;
+
+#5 How many persons age 25 or less died from one of the top 3 causes of death (diseas of the heart, cancer, or diabetes)?
+select count("Cause Of Death") as Total_top_3_causes_of_death
+from LocalCausesofDeath
+where "Cause Of Death" = "Diseases of Heart" or "Cause Of Death" = "Cancer" or "Cause Of Death" = "Diabetes"
+and age <= 25;
