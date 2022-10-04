@@ -1,0 +1,21 @@
+
+
+#1 How many patients participated at the start of the study 5 years ago?
+select count("Assessment Year") as Participants_5years_ago
+from SmokingStatus
+where "Assessment Year" = "5 years ago";
+
+#2 How many patients participated in the current year?
+select count("Assessment Year") as Participants_Current_Year
+from SmokingStatus
+where "Assessment Year" = "Current Year";
+
+#3 How many participants are current smokers in the current year?
+select count("Smoking Status") as Current_Smokers
+from SmokingStatus
+where "Assessment Year" = "Current Year" and "Smoking Status" = "Current Smoker";
+
+#4 How many participants were ex-smokers at the start of the study 5 years ago?
+select count("Smoking Status") as Ex_Smokers_5years_Ago
+from SmokingStatus
+where "Assessment Year" = "5 years ago" and "Smoking Status" = "Ex-Smoker";
