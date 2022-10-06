@@ -1,2 +1,7 @@
 #In this SQL, I am querying a table that contains information on adverse drug events to quantify data on causes, gender, age & race/ethnicity.
 
+#1 For drug elimination, how many ADE's were recorded?
+select count (*) as Total_Count
+from AdverseDrugEvents
+where "ADE Reason" = "Drug elimination";
+
