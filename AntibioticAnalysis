@@ -1,3 +1,26 @@
 #In this SQL, I am querying a table to quantify data about the use of antibiotics for hospitalized patients - antibiotic analysis focused on bacteria or fungus causing infection and their susceptibility to various antibiotic drug treatments in patients.
 
-#1 
+#1 How many cases of E. coli were susceptible to ampicillin?
+select count("E.Coli") as Total_Ecoli_Count
+from Mass_Sensitivities
+where Susceptibilities = "Susceptible" 
+	AND Antibiotics = "Ampicillin";
+  
+#2 How many cases of E. coli were susceptible to cefpodoxime?
+select count("E.Coli") as Total_Ecoli_Count
+from Mass_Sensitivities
+where Susceptibilities = "Susceptible" 
+	AND Antibiotics = "Cefpodoxime";
+  
+#3 How many cases of E. coli were susceptible to ciprofloxacin?
+select count("E.Coli") as Total_Ecoli_Count
+from Mass_Sensitivities
+where Susceptibilities = "Susceptible" 
+	AND Antibiotics = "Ciprofloxacin";
+  
+#4 Total and compare all of the microbes that are susceptible, and identify the antibiotic used and specimen collected.
+select Microbes, Antibiotics, Susceptibilities, Specimen,count(Microbes) as Total_Microbe_Count
+from Mass_Sensitivities
+where Susceptibilities = "Susceptible"
+group by "Antibiotics" 
+order by "Microbes";
