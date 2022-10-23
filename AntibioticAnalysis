@@ -17,10 +17,40 @@ select count("E.Coli") as Total_Ecoli_Count
 from Mass_Sensitivities
 where Susceptibilities = "Susceptible" 
 	AND Antibiotics = "Ciprofloxacin";
-  
-#4 Total and compare all of the microbes that are susceptible, and identify the antibiotic used and specimen collected.
-select Microbes, Antibiotics, Susceptibilities, Specimen,count(Microbes) as Total_Microbe_Count
+
+#4 How many cases of E. coli were susceptible to cephalexin or tri/sulfa?
+select Microbes, Antibiotics, Susceptibilities, count (*) as Total_Susceptible_Count
 from Mass_Sensitivities
-where Susceptibilities = "Susceptible"
-group by "Antibiotics" 
-order by "Microbes";
+where (Antibiotics = 'Cephalexin' 
+	or Antibiotics = 'Tri/Sulfa')
+	and Microbes = 'E. coli'
+	and Susceptibilities = 'Susceptible'
+group by Antibiotics
+order by Antibiotics desc;
+
+#5 Total and compare all of the microbes that are susceptible, and identify the antibiotic used and specimen collected.
+select Microbes, Antibiotics, Susceptibilities, Specimen, count (*) as Total_Susceptible_Count
+from Mass_Sensitivities
+where Susceptibilities = 'Susceptible'
+group by Microbes, Antibiotics, Susceptibilities, Specimen;
+
+#6 How many cases of patients age 65 and over demonstrated antibiotic resistance?
+select count(Susceptibilities) as Total_Over_65
+from Mass_Sensitivities
+where Susceptibilities = 'Resistant '
+and age >= 65;
+
+#7 How many patients age 65 and over or patients age 10 and under had the streptococcus microbe deteceted in the blood specimen?
+select count(Susceptibilities) as Total_Over_65_or_Under_10
+from Mass_Sensitivities
+where microbes = "Streptococcus"
+and age >= 65 or age <= 10;
+
+#8 How many patient age 65 and over or patients age 10 and under demonstrated resistance to ciprofloxacin for E. coli and were tested with a urine sample?
+select count(Susceptibilities) as Total_Over_65_or_Under_10
+from Mass_Sensitivities
+where microbes = "E. coli"
+and antibiotics = "Ciprofloxacin"
+and susceptibilities = "Resistant "
+and specimen = "Urine"
+and age >= 65 or age <= 10;
