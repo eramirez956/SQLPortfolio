@@ -4,19 +4,22 @@
 select count("E.Coli") as Total_Ecoli_Count
 from Mass_Sensitivities
 where Susceptibilities = "Susceptible" 
-	AND Antibiotics = "Ampicillin";
+	AND Antibiotics = "Ampicillin"
+	AND microbes = "E. coli";
   
 #2 How many cases of E. coli were susceptible to cefpodoxime?
 select count("E.Coli") as Total_Ecoli_Count
 from Mass_Sensitivities
 where Susceptibilities = "Susceptible" 
-	AND Antibiotics = "Cefpodoxime";
+	AND Antibiotics = "Cefpodoxime"
+	AND microbes = "E. coli";
   
 #3 How many cases of E. coli were susceptible to ciprofloxacin?
 select count("E.Coli") as Total_Ecoli_Count
 from Mass_Sensitivities
 where Susceptibilities = "Susceptible" 
-	AND Antibiotics = "Ciprofloxacin";
+	AND Antibiotics = "Ciprofloxacin"
+	AND microbes = "E. coli";
 
 #4 How many cases of E. coli were susceptible to cephalexin or tri/sulfa?
 select Microbes, Antibiotics, Susceptibilities, count (*) as Total_Susceptible_Count
